@@ -1,14 +1,40 @@
 ---
-import { SITE_TITLE } from "../consts";
+import { Home, User, Text } from "lucide-astro";
+
+const listItems = [
+  {
+    title: "Home",
+    icon: Home,
+    href: "/",
+  },
+  {
+    title: "About",
+    icon: User,
+    href: "/about",
+  },
+  {
+    title: "Blog",
+    icon: Text,
+    href: "/blog",
+  },
+];
 ---
 
-<div x-show.transition.opacity.duration.700ms="open" class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+<div class="fixed bottom-10 left-1/2 transform -translate-x-1/2">
   <nav>
-    <h2><a href="/">{SITE_TITLE}</a></h2>
-    <div class="internal-links">
-      <!-- <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/about">About</HeaderLink> -->
-    </div>
+    <ul class="flex items-center justify-center gap-2 bg-dark-600 rounded-lg overflow-hidden">
+      {
+        listItems.map((item) => {
+          return (
+            <li>
+              <a href={item.href} class="min-w-[80px] min-h-[70px] max-w-[80px] max-h-[70px] p-2 flex items-center justify-center flex-col hover:bg-dark-400 transition-all">
+                {<item.icon />}
+                <p class="font-semibold mt-0.5">{item.title}</p>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
   </nav>
 </div>
