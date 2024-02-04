@@ -1,0 +1,17 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import BottomNavigatonBox from '../components/BottomNavigatonBox.astro';
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body class="bg-dark text-light relative min-h-screen max-w-full min-w-full">
+		<BottomNavigatonBox title={title} />
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>

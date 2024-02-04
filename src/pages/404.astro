@@ -1,1 +1,12 @@
-<h1>sa</h1>
+---
+import Link from '../components/Link.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Default from '../layouts/Default.astro';
+---
+<Default title={SITE_TITLE} description={SITE_DESCRIPTION}>
+    <div class="w-100 h-screen flex items-center justify-center flex-col gap-4">
+        <h1 class="text-8xl text-red-500 font-bold">404</h1>
+        <p class="text-4xl">Page Not Found!</p>
+        <Link href="/">Go To Home</Link>
+	</div>
+</Default>
