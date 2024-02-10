@@ -20,14 +20,16 @@ const listItems = [
 ];
 ---
 
-<div class="fixed bottom-10 left-1/2 transform -translate-x-1/2">
+<div class="bg-dark-600 fixed bottom-10 left-1/2 transform -translate-x-1/2 shadow-lg shadow-dark-600 rounded-lg overflow-hidden">
   <nav>
-    <ul class="flex items-center justify-center gap-2 bg-dark-600 rounded-lg overflow-hidden">
+    <ul class="flex items-center justify-center">
       {
         listItems.map((item) => {
+          let isActive = Astro.url.pathname.startsWith(item.href);
+          isActive = item.href == "/" ? item.href == Astro.url.pathname : isActive;
           return (
             <li>
-              <a href={item.href} class="min-w-[80px] min-h-[70px] max-w-[80px] max-h-[70px] p-2 flex items-center justify-center flex-col hover:bg-dark-400 transition-all">
+              <a href={item.href} class:list={["min-w-[80px] min-h-[70px] max-w-[80px] max-h-[70px] p-2 flex items-center justify-center flex-col hover:bg-dark-400 transition-all", { "bg-primary": isActive }]}>
                 {<item.icon />}
                 <p class="font-semibold mt-0.5">{item.title}</p>
               </a>

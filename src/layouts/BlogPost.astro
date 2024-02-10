@@ -2,17 +2,17 @@
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import BottomNavigatonBox from "../components/BottomNavigatonBox.astro";
+import { SITE_DESCRIPTION } from "../consts.ts";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, date } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={SITE_DESCRIPTION} />
   </head>
-
   <body class="bg-dark text-light relative min-h-screen max-w-full min-w-full">
     <BottomNavigatonBox />
     <main>
