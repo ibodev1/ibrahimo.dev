@@ -9,14 +9,14 @@ type Props = CollectionEntry<"blog">["data"];
 const { title } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" transition:animate="none">
   <head>
     <BaseHead title={title} description={SITE_DESCRIPTION} />
   </head>
   <body class="bg-dark text-light relative min-h-screen max-w-full min-w-full">
-    <BottomNavigatonBox />
-    <main>
+    <main transition:animate="fade">
       <slot />
     </main>
+    <BottomNavigatonBox />
   </body>
 </html>
