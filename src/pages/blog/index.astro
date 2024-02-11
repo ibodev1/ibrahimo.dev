@@ -1,7 +1,7 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts.ts';
 import { getCollection } from 'astro:content';
-import Default from '../../layouts/Default.astro';
+import Default from '@/layouts/Default.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => a.data.date.valueOf() - b.data.date.valueOf()
