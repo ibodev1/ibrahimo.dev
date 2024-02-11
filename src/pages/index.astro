@@ -1,11 +1,61 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts.ts";
 import Default from "@/layouts/Default.astro";
+import { Github, Twitter, Linkedin, Chrome, Heart } from "lucide-astro";
+
+type SocialMeadia = {
+  name: string;
+  url: string;
+  icon: any;
+};
+
+const socialMedias: SocialMeadia[] = [
+  {
+    name: "Github",
+    url: "https://github.com/ibodev1",
+    icon: Github
+  },
+  {
+    name: "Twitter (X)",
+    url: "https://twitter.com/ibodev1",
+    icon: Twitter
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/ibrahimodev",
+    icon: Linkedin
+  },
+  {
+    name: "Google Dev",
+    url: "https://g.dev/ibodev",
+    icon: Chrome
+  },
+  {
+    name: "Mastodon",
+    url: "https://mastodon.com.tr/@ibodev",
+    icon: Heart
+  }
+];
 ---
 
 <Default title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <div class="w-full h-screen flex items-center justify-center flex-col" transition:animate="slide">
+  <div
+    class="w-full h-screen flex items-center justify-center flex-col text-center"
+    transition:animate="slide"
+  >
     <h1 class="text-light text-4xl font-bold">Hey! I'm İbrahim 👋</h1>
-	<p class="text-light-700 text-xl mt-2">Younger Software Developer</p>
+    <p class="text-light-700 text-xl my-4">Younger Software Developer</p>
+    <div class="flex items-center justify-center gap-4 flex-wrap">
+      {
+        socialMedias.map((s) => {
+          return (
+            <a href={s.url} class="bg-secondary hover:bg-secondary-600 active:bg-secondary-700 transition-all w-24 h-auto py-4 rounded-lg flex items-center justify-center text-center text-ellipsis flex-col text-nowrap" target="_blank" rel="follow">
+              {<s.icon />}
+              {s.name}
+            </a>
+          );
+        })
+      }
+    </div>
   </div>
 </Default>
