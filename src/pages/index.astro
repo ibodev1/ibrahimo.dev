@@ -1,7 +1,11 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts.ts';
-import Default from '@/layouts/Default.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts.ts";
+import Default from "@/layouts/Default.astro";
 ---
+
 <Default title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<h1 class="text-primary bg-secondary">🧑‍🚀 Hello, Astronaut!</h1>
+  <div class="w-full h-screen flex items-center justify-center flex-col" transition:animate="slide">
+    <h1 class="text-light text-4xl font-bold">Hey! I'm İbrahim 👋</h1>
+	<p class="text-light-700 text-xl mt-2">Younger Software Developer</p>
+  </div>
 </Default>
