@@ -1,0 +1,17 @@
+---
+import { format } from "date-fns";
+type Props = {
+    slug: string;
+    title: string;
+    pubDate: Date;
+};
+
+const { slug, title, pubDate } = Astro.props;
+---
+
+<a href={`/blog/${slug}/`} class="block rounded-lg bg-secondary p-4">
+    <h4 class="text-lg font-bold">{title}</h4>
+    <time datetime={pubDate.toString()} class="text-sm">
+        {format(pubDate, "dd MMMM yyyy")}
+    </time>
+</a>
