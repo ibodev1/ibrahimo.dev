@@ -9,7 +9,7 @@ const { title, description } = Astro.props;
 		<BaseHead title={title} description={description} />
 	</head>
 	<body class="bg-dark text-light relative min-h-screen max-w-full min-w-full">
-		<main class="container mx-auto max-w-[1024px]" transition:animate="fade">
+		<main class="container mx-auto max-w-[1024px] lg:pb-0 pb-24" transition:animate="fade">
 			<slot />
 		</main>
 		<BottomNavigatonBox />
