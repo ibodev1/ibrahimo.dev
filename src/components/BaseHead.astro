@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 import '@/styles/global.css';
 
 interface Props {
@@ -42,9 +43,13 @@ const { title = "Developer", description = "Full Stack Developer", image = '/bac
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
+<!-- Vercel Speed Insights -->
+<SpeedInsights />
+
 <!-- ViewTransitions -->
 <ViewTransitions />
 
+<!-- Scroll To Top After Page Transition  -->
 <script>
 	document.addEventListener('astro:after-swap', () => window.scrollTo({ left: 0, top: 0, behavior: 'instant' }))
 </script>
