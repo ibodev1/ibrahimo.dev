@@ -1,5 +1,6 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+import backgroudImge from "../public/background.jpg";
 
-export const SITE_TITLE = '@ibodev';
-export const SITE_DESCRIPTION = 'Younger software developer!';
+export const SITE_TITLE = "@ibodev";
+export const SITE_DESCRIPTION = "Younger software developer!";
+export const SITE_IMAGE_PATH = "/background.jpg";
+export const SITE_IMAGE = backgroudImge;
