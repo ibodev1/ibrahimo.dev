@@ -1,35 +1,45 @@
 ---
-import { Home, User, Text } from "lucide-astro";
+import { Home, User, Text } from 'lucide-astro';
 
 const listItems = [
   {
-    title: "Home",
+    title: 'Home',
     icon: Home,
-    href: "/",
+    href: '/'
   },
   {
-    title: "About",
+    title: 'About',
     icon: User,
-    href: "/about",
+    href: '/about'
   },
   {
-    title: "Blog",
+    title: 'Blog',
     icon: Text,
-    href: "/blog",
-  },
+    href: '/blog'
+  }
 ];
 ---
 
-<div class="bg-dark-600 fixed bottom-5 lg:bottom-10 left-1/2 transform -translate-x-1/2 shadow-lg shadow-dark-600 rounded-lg overflow-hidden !z-[99999999]" transition:animate="none">
+<div
+  class="bg-dark-600 fixed bottom-5 lg:bottom-10 left-1/2 transform -translate-x-1/2 shadow-lg shadow-dark-600 rounded-lg overflow-hidden !z-[99999999]"
+  transition:animate="none"
+>
   <nav>
     <ul class="flex items-center justify-center">
       {
         listItems.map((item) => {
           let isActive = Astro.url.pathname.startsWith(item.href);
-          isActive = item.href == "/" ? item.href == Astro.url.pathname : isActive;
+          isActive =
+            item.href == '/' ? item.href == Astro.url.pathname : isActive;
           return (
             <li>
-              <a href={item.href} class:list={["min-w-[80px] min-h-[70px] max-w-[80px] max-h-[70px] p-2 flex items-center justify-center flex-col hover:bg-dark-400 transition-all", { "bg-primary": isActive }]}>
+              <a
+                href={item.href}
+                class:list={[
+                  'min-w-[80px] min-h-[70px] max-w-[80px] max-h-[70px] p-2 flex items-center justify-center flex-col hover:bg-dark-400 transition-all',
+                  { 'bg-primary': isActive }
+                ]}
+              >
                 {<item.icon />}
                 <p class="font-semibold mt-0.5">{item.title}</p>
               </a>

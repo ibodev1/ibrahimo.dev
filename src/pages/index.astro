@@ -1,7 +1,7 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts.ts";
-import Default from "@/layouts/Default.astro";
-import { Github, Twitter, Linkedin, Chrome, Heart } from "lucide-astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts.ts';
+import Default from '@/layouts/Default.astro';
+import { Github, Twitter, Linkedin, Chrome, Heart } from 'lucide-astro';
 
 type SocialMeadia = {
   name: string;
@@ -11,28 +11,28 @@ type SocialMeadia = {
 
 const socialMedias: SocialMeadia[] = [
   {
-    name: "Github",
-    url: "https://github.com/ibodev1",
+    name: 'Github',
+    url: 'https://github.com/ibodev1',
     icon: Github
   },
   {
-    name: "Twitter (X)",
-    url: "https://twitter.com/ibodev1",
+    name: 'Twitter (X)',
+    url: 'https://twitter.com/ibodev1',
     icon: Twitter
   },
   {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/ibrahimodev",
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/ibrahimodev',
     icon: Linkedin
   },
   {
-    name: "Google Dev",
-    url: "https://g.dev/ibodev",
+    name: 'Google Dev',
+    url: 'https://g.dev/ibodev',
     icon: Chrome
   },
   {
-    name: "Mastodon",
-    url: "https://mastodon.com.tr/@ibodev",
+    name: 'Mastodon',
+    url: 'https://mastodon.com.tr/@ibodev',
     icon: Heart
   }
 ];

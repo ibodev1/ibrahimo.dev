@@ -3,15 +3,19 @@ import BaseHead from '@/components/BaseHead.astro';
 import BottomNavigatonBox from '@/components/BottomNavigatonBox.astro';
 const { title, description } = Astro.props;
 ---
+
 <!doctype html>
 <html lang="en" transition:animate="none">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
-	<body class="bg-dark text-light relative min-h-screen max-w-full min-w-full">
-		<main class="container mx-auto max-w-[1024px] lg:pb-0 pb-24" transition:animate="fade">
-			<slot />
-		</main>
-		<BottomNavigatonBox />
-	</body>
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body class="bg-dark text-light relative min-h-screen max-w-full min-w-full">
+    <main
+      class="container mx-auto max-w-[1024px] lg:pb-0 pb-24"
+      transition:animate="fade"
+    >
+      <slot />
+    </main>
+    <BottomNavigatonBox />
+  </body>
 </html>
