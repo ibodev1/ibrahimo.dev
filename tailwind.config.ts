@@ -1,3 +1,4 @@
+import type { Config } from 'tailwindcss';
 import getPalette from 'tailwindcss-palette-generator';
 
 const palette = getPalette([
@@ -19,13 +20,12 @@ const palette = getPalette([
   }
 ]);
 
-/** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  content: ['./src/**/*.{astro,html,js,jsx,ts,tsx}'],
   theme: {
     extend: {
       colors: palette
     }
   },
   plugins: []
-};
+} satisfies Config;
