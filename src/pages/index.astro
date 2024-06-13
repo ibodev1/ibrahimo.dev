@@ -1,7 +1,7 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts.ts';
 import Default from '@/layouts/Default.astro';
-import { Github, Twitter, Linkedin, Chrome, Heart } from 'lucide-astro';
+import { Github, Twitter, Linkedin, FileText, Chrome, Heart } from 'lucide-astro';
 
 type SocialMeadia = {
   name: string;
@@ -24,6 +24,11 @@ const socialMedias: SocialMeadia[] = [
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/ibrahimodev',
     icon: Linkedin
+  },
+  {
+    name: 'Read.cv',
+    url: 'https://read.cv/ibodev',
+    icon: FileText
   },
   {
     name: 'Google Dev',
@@ -52,7 +57,7 @@ const socialMedias: SocialMeadia[] = [
               href={s.url}
               class="bg-secondary hover:bg-secondary-600 active:bg-secondary-700 transition-all w-24 h-auto py-4 rounded-lg flex items-center justify-center text-center text-ellipsis flex-col text-nowrap"
               target="_blank"
-              rel="follow"
+              rel="nofollow"
             >
               {<s.icon />}
               {s.name}
