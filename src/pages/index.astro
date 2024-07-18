@@ -1,7 +1,14 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts.ts';
 import Default from '@/layouts/Default.astro';
-import { Github, Twitter, Linkedin, FileText, Chrome, Heart } from 'lucide-astro';
+import {
+  Github,
+  Twitter,
+  Linkedin,
+  FileText,
+  Chrome,
+  Heart
+} from 'lucide-astro';
 
 type SocialMeadia = {
   name: string;
@@ -48,7 +55,7 @@ const socialMedias: SocialMeadia[] = [
     class="w-full h-screen flex items-center justify-center flex-col text-center"
   >
     <h1 class="text-light text-4xl font-bold">Hello! I'm Ibrahim 👋</h1>
-    <p class="text-light-700 text-xl my-4">Young Software Developer</p>
+    <p class="text-light-700 text-xl my-4">Software Developer</p>
     <div class="flex items-center justify-center gap-4 flex-wrap">
       {
         socialMedias.map((s) => {

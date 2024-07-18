@@ -47,7 +47,7 @@ import FormInput from '@/components/FormInput.astro';
   </section>
 </Layout>
 
-<script lang="ts">
+<script lang="ts" is:inline>
   const contactForm = document.querySelector('#contact-form');
   const successAlertElm = document.querySelector('#success-alert');
   const errorAlertElm = document.querySelector('#error-alert');
@@ -59,29 +59,39 @@ import FormInput from '@/components/FormInput.astro';
 
     submitBtn.addEventListener('click', async (e) => {
       e.preventDefault();
+
       try {
+        contactForm.reportValidity();
+
+        const isValid = contactForm.checkValidity();
+
+        if (!isValid) {
+          contactForm.reportValidity();
+          return;
+        }
+
         const formData = new FormData(contactForm);
         const response = await fetch('/api/contact', {
           method: 'POST',
           body: formData
         });
         const body = await response.json();
-        let message = body?.message;
+        const message = body?.message;
 
         if (response.ok) {
           successAlertElm.classList.remove('hidden');
           errorAlertElm.classList.add('hidden');
-          successAlertElm.innerHTML = message || "Success!";
+          successAlertElm.innerHTML = message || 'Success!';
           return;
         }
 
         successAlertElm.classList.add('hidden');
         errorAlertElm.classList.remove('hidden');
-        errorAlertElm.innerHTML = message || "A problem has occurred";
+        errorAlertElm.innerHTML = message || 'A problem has occurred';
       } catch (error) {
         successAlertElm.classList.add('hidden');
         errorAlertElm.classList.remove('hidden');
-        errorAlertElm.innerHTML = error?.message || "A problem has occurred";
+        errorAlertElm.innerHTML = error?.message || 'A problem has occurred';
       }
     });
   }

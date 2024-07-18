@@ -1,6 +1,5 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-import SpeedInsights from '@vercel/speed-insights/astro';
 import '@/styles/global.css';
 import { SITE_DESCRIPTION, SITE_IMAGE_PATH, SITE_TITLE } from '@/consts';
 
@@ -53,9 +52,6 @@ const {
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
-
-<!-- Vercel Speed Insights -->
-<SpeedInsights />
 
 <!-- ViewTransitions -->
 <ViewTransitions />

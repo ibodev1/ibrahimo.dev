@@ -25,13 +25,17 @@ export const POST: APIRoute = async (ctx) => {
 
     await checkSpamContact(email!);
 
-    await db.insert(Contact).values({
-      name,
-      surname,
-      email,
-      subject,
-      message
-    });
+    type NewContact = typeof Contact.$inferInsert;
+
+    const newContact: NewContact = {
+      name: name!,
+      surname: surname!,
+      email: email!,
+      subject: subject!,
+      message: message!
+    };
+
+    await db.insert(Contact).values(newContact);
 
     return Response.json(
       {
