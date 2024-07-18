@@ -33,7 +33,7 @@ export const POST: APIRoute = async (ctx) => {
       email: email!,
       subject: subject!,
       message: message!
-    } 
+    };
 
     await db.insert(Contact).values(newContact);
 

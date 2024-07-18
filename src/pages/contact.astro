@@ -59,7 +59,7 @@ import FormInput from '@/components/FormInput.astro';
 
     submitBtn.addEventListener('click', async (e) => {
       e.preventDefault();
-      
+
       try {
         contactForm.reportValidity();
 
@@ -81,17 +81,17 @@ import FormInput from '@/components/FormInput.astro';
         if (response.ok) {
           successAlertElm.classList.remove('hidden');
           errorAlertElm.classList.add('hidden');
-          successAlertElm.innerHTML = message || "Success!";
+          successAlertElm.innerHTML = message || 'Success!';
           return;
         }
 
         successAlertElm.classList.add('hidden');
         errorAlertElm.classList.remove('hidden');
-        errorAlertElm.innerHTML = message || "A problem has occurred";
+        errorAlertElm.innerHTML = message || 'A problem has occurred';
       } catch (error) {
         successAlertElm.classList.add('hidden');
         errorAlertElm.classList.remove('hidden');
-        errorAlertElm.innerHTML = error?.message || "A problem has occurred";
+        errorAlertElm.innerHTML = error?.message || 'A problem has occurred';
       }
     });
   }
