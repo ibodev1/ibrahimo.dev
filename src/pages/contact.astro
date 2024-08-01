@@ -3,6 +3,7 @@ import Layout from '@/layouts/Default.astro';
 import Heading from '@/components/Heading.astro';
 import FormInput from '@/components/FormInput.astro';
 ---
+/// <reference types="astro/astro-jsx" />
 
 <Layout title="Contact">
   <section class="p-6">
@@ -47,52 +48,45 @@ import FormInput from '@/components/FormInput.astro';
   </section>
 </Layout>
 
-<script lang="ts" is:inline>
-  const contactForm = document.querySelector('#contact-form');
-  const successAlertElm = document.querySelector('#success-alert');
-  const errorAlertElm = document.querySelector('#error-alert');
+<script>
+  // Use type assertion for more specific element types
+  const contactForm = document.querySelector('#contact-form') as HTMLFormElement;
+  const successAlertElm = document.querySelector('#success-alert') as HTMLElement;
+  const errorAlertElm = document.querySelector('#error-alert') as HTMLElement;
+  const submitBtn = document.querySelector('#submit-btn') as HTMLButtonElement;
 
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => e.preventDefault());
+  if (contactForm && successAlertElm && errorAlertElm && submitBtn) {
+    contactForm.addEventListener('submit', (e: Event) => e.preventDefault());
 
-    const submitBtn = document.querySelector('#submit-btn');
-
-    submitBtn.addEventListener('click', async (e) => {
+    submitBtn.addEventListener('click', async (e: Event) => {
       e.preventDefault();
 
       try {
-        contactForm.reportValidity();
-
-        const isValid = contactForm.checkValidity();
-
-        if (!isValid) {
-          contactForm.reportValidity();
-          return;
-        }
+        if (!contactForm.reportValidity()) return;
 
         const formData = new FormData(contactForm);
         const response = await fetch('/api/contact', {
           method: 'POST',
-          body: formData
+          body: formData,
+          headers: {
+            'Accept': 'application/json',
+          },
         });
-        const body = await response.json();
-        const message = body?.message;
 
-        if (response.ok) {
-          successAlertElm.classList.remove('hidden');
-          errorAlertElm.classList.add('hidden');
-          successAlertElm.innerHTML = message || 'Success!';
-          return;
-        }
+        const { message = response.ok ? 'Success!' : 'A problem has occurred' } = await response.json();
 
-        successAlertElm.classList.add('hidden');
-        errorAlertElm.classList.remove('hidden');
-        errorAlertElm.innerHTML = message || 'A problem has occurred';
+        successAlertElm.classList.toggle('hidden', !response.ok);
+        errorAlertElm.classList.toggle('hidden', response.ok);
+
+        (response.ok ? successAlertElm : errorAlertElm).textContent = message;
       } catch (error) {
-        successAlertElm.classList.add('hidden');
+        console.error('Form submission error:', error);
         errorAlertElm.classList.remove('hidden');
-        errorAlertElm.innerHTML = error?.message || 'A problem has occurred';
+        successAlertElm.classList.add('hidden');
+        errorAlertElm.textContent = error instanceof Error ? error.message : 'An unexpected error occurred';
       }
     });
+  } else {
+    console.warn('One or more required elements are missing from the DOM');
   }
 </script>
