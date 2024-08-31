@@ -21,7 +21,7 @@ const listItems = [
 ---
 
 <div
-  class="bg-dark-600 fixed bottom-5 lg:bottom-10 left-1/2 transform -translate-x-1/2 shadow-lg shadow-dark-600 rounded-lg overflow-hidden !z-[99999999]"
+  class="bg-dark-600/80 backdrop-blur-md fixed bottom-5 lg:bottom-10 left-1/2 transform -translate-x-1/2 shadow-lg shadow-dark-600 rounded-lg overflow-hidden !z-[99999999]"
   transition:animate="none"
 >
   <nav>
@@ -36,12 +36,12 @@ const listItems = [
               <a
                 href={item.href}
                 class:list={[
-                  'min-w-[80px] min-h-[70px] max-w-[80px] max-h-[70px] p-2 flex items-center justify-center flex-col hover:bg-dark-400 transition-all',
-                  { 'bg-primary': isActive }
+                  'min-w-[80px] min-h-[70px] max-w-[80px] max-h-[70px] p-2 flex items-center justify-center flex-col hover:bg-dark-400/50 transition-all',
+                  { 'bg-primary/20': isActive }
                 ]}
               >
-                {<item.icon />}
-                <p class="font-semibold mt-0.5">{item.title}</p>
+                {<item.icon class="w-6 h-6" />}
+                <p class="font-semibold text-sm mt-0.5">{item.title}</p>
               </a>
             </li>
           );
