@@ -2,14 +2,16 @@
 const { name, type = 'text', placeholder } = Astro.props;
 ---
 
-<div class="flex items-start flex-col flex-1 w-full">
-  <label for={name} class="mb-1">{placeholder}</label>
+<div>
+  <label for={name} class="block text-sm font-medium text-light-400">
+    {placeholder}
+  </label>
   <input
     type={type}
     name={name}
     id={name}
     placeholder={placeholder}
     required
-    class="w-full border border-primary text-black rounded-md w-100 flex-1 py-2 px-4 outline-none"
+    class="mt-1 block w-full border border-primary bg-dark-500 text-light rounded-md py-2 px-3 shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
   />
 </div>
