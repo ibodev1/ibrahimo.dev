@@ -29,8 +29,7 @@ const listItems = [
       {
         listItems.map((item) => {
           let isActive = Astro.url.pathname.startsWith(item.href);
-          isActive =
-            item.href == '/' ? item.href == Astro.url.pathname : isActive;
+          isActive = item.href == '/' ? item.href == Astro.url.pathname : isActive;
           return (
             <li>
               <a

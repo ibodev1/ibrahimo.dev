@@ -1,4 +1,4 @@
-import { column, defineDb, defineTable } from 'astro:db';
+import { column, defineDb, defineTable, NOW } from 'astro:db';
 
 const Contact = defineTable({
   columns: {
@@ -8,7 +8,8 @@ const Contact = defineTable({
     email: column.text(),
     subject: column.text(),
     message: column.text(),
-    createdAt: column.date({ default: new Date() })
+    userAgent: column.text({ optional: true }),
+    createdAt: column.date({ default: NOW })
   }
 });
 

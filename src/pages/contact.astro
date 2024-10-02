@@ -8,12 +8,7 @@ import FormInput from '@/components/FormInput.astro';
   <section class="py-12 px-6 md:px-8 lg:px-12 pb-24">
     <div class="max-w-lg mx-auto">
       <Heading>Contact Me 💬</Heading>
-      <form
-        action="/api/contact"
-        method="POST"
-        class="mt-8 space-y-6"
-        id="contact-form"
-      >
+      <form action="/api/contact" method="POST" class="mt-8 space-y-6" id="contact-form">
         <div
           id="success-alert"
           class="hidden bg-emerald-500 bg-opacity-50 text-white border-2 border-emerald-500 rounded-md py-2 px-4"
@@ -31,9 +26,7 @@ import FormInput from '@/components/FormInput.astro';
         <FormInput type="email" name="email" placeholder="Email" />
         <FormInput name="subject" placeholder="Subject" />
         <div>
-          <label for="message" class="block text-sm font-medium text-light-400">
-            Message
-          </label>
+          <label for="message" class="block text-sm font-medium text-light-400"> Message </label>
           <textarea
             name="message"
             id="message"
@@ -56,12 +49,8 @@ import FormInput from '@/components/FormInput.astro';
 
 <script>
   // Use type assertion for more specific element types
-  const contactForm = document.querySelector(
-    '#contact-form'
-  ) as HTMLFormElement;
-  const successAlertElm = document.querySelector(
-    '#success-alert'
-  ) as HTMLElement;
+  const contactForm = document.querySelector('#contact-form') as HTMLFormElement;
+  const successAlertElm = document.querySelector('#success-alert') as HTMLElement;
   const errorAlertElm = document.querySelector('#error-alert') as HTMLElement;
   const submitBtn = document.querySelector('#submit-btn') as HTMLButtonElement;
 
@@ -83,9 +72,7 @@ import FormInput from '@/components/FormInput.astro';
           }
         });
 
-        const {
-          message = response.ok ? 'Success!' : 'A problem has occurred'
-        } = await response.json();
+        const { message = response.ok ? 'Success!' : 'A problem has occurred' } = await response.json();
 
         successAlertElm.classList.toggle('hidden', !response.ok);
         errorAlertElm.classList.toggle('hidden', response.ok);
@@ -95,10 +82,7 @@ import FormInput from '@/components/FormInput.astro';
         console.error('Form submission error:', error);
         errorAlertElm.classList.remove('hidden');
         successAlertElm.classList.add('hidden');
-        errorAlertElm.textContent =
-          error instanceof Error
-            ? error.message
-            : 'An unexpected error occurred';
+        errorAlertElm.textContent = error instanceof Error ? error.message : 'An unexpected error occurred';
       }
     });
   } else {
