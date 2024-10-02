@@ -4,4 +4,4 @@
 - [Typescript](https://www.typescriptlang.org/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [tailwindcss-palette-generator](https://github.com/ibodev1/tailwindcss-palette-generator)
-- [Netlify](https://netlify.com/)
+- [Vercel](https://vercel.com/)
