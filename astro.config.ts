@@ -1,8 +1,8 @@
 import db from '@astrojs/db';
-import netlify from '@astrojs/netlify';
 import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
+import vercel from '@astrojs/vercel/serverless';
 import webVitals from '@astrojs/web-vitals';
 import robotsTxt from 'astro-robots-txt';
 import { defineConfig } from 'astro/config';
@@ -23,12 +23,19 @@ export default defineConfig({
     db()
   ],
   output: 'server',
-  adapter: netlify({
-    edgeMiddleware: true
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true
+    },
+    speedInsights: {
+      enabled: true
+    },
+    maxDuration: 8
   }),
   vite: {
-    ssr: {
-      external: ['svgo']
+    server: {
+      host: true,
+      open: true
     }
   }
 });

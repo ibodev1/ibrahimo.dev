@@ -2,6 +2,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import '@/styles/global.css';
 import { SITE_DESCRIPTION, SITE_IMAGE_PATH, SITE_TITLE } from '@/consts';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
   title?: string;
@@ -9,9 +10,10 @@ interface Props {
   image?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
 const { title = SITE_TITLE, description = SITE_DESCRIPTION, image = SITE_IMAGE_PATH } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const imageURL = new URL(image, Astro.url);
 ---
 
 <!-- Global Metadata -->
@@ -37,17 +39,20 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, image = SITE_IMAGE_P
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={imageURL} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:image" content={imageURL} />
 
 <!-- ViewTransitions -->
 <ViewTransitions />
+
+<!-- Vercel SpeedInsights -->
+<SpeedInsights />
 
 <!-- Scroll To Top After Page Transition  -->
 <script>
