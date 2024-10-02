@@ -5,56 +5,35 @@ import { db, Contact } from 'astro:db';
 export const POST: APIRoute = async (ctx) => {
   try {
     const formData = await ctx.request.formData();
-    const name = formData.get('name')?.toString();
-    const surname = formData.get('surname')?.toString();
-    const email = formData.get('email')?.toString();
-    const subject = formData.get('subject')?.toString();
-    const message = formData.get('message')?.toString();
+    const { name, surname, email, subject, message } = Object.fromEntries(formData.entries());
 
-    const checkResponse = checkFormData({
-      name,
-      surname,
-      email,
-      subject,
-      message
+    const userAgent = ctx.request.headers.get('User-Agent');
+
+    const checkResponse = checkFormData({ name, surname, email, subject, message });
+    if (checkResponse instanceof Response) return checkResponse;
+
+    await checkSpamContact(email as string);
+
+    await db.insert(Contact).values({
+      name: name as string,
+      surname: surname as string,
+      email: email as string,
+      subject: subject as string,
+      message: message as string,
+      userAgent
     });
 
-    if (checkResponse !== null && checkResponse instanceof Response) {
-      return checkResponse;
-    }
-
-    await checkSpamContact(email!);
-
-    type NewContact = typeof Contact.$inferInsert;
-
-    const newContact: NewContact = {
-      name: name!,
-      surname: surname!,
-      email: email!,
-      subject: subject!,
-      message: message!
-    };
-
-    await db.insert(Contact).values(newContact);
-
-    return Response.json(
+    return new Response(
+      JSON.stringify({ success: true, message: 'Your contact message has been successfully sent.' }),
       {
-        success: true,
-        message: 'Your contact message has been successfully sent.'
-      },
-      {
-        status: 200
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
       }
     );
   } catch (error) {
-    return Response.json(
-      {
-        success: false,
-        message: (error as Error).message
-      },
-      {
-        status: 500
-      }
-    );
+    return new Response(JSON.stringify({ success: false, message: (error as Error).message }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 };

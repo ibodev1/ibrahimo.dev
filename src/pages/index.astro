@@ -1,14 +1,7 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts.ts';
 import Default from '@/layouts/Default.astro';
-import {
-  Github,
-  Twitter,
-  Linkedin,
-  FileText,
-  Chrome,
-  Heart
-} from 'lucide-astro';
+import { Github, Twitter, Linkedin, FileText, Chrome, Heart } from 'lucide-astro';
 
 type SocialMedia = {
   name: string;
@@ -51,13 +44,9 @@ const socialMedias: SocialMedia[] = [
 ---
 
 <Default title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <div
-    class="flex items-center justify-center flex-col gap-8 text-center px-4 h-screen"
-  >
+  <div class="flex items-center justify-center flex-col gap-8 text-center px-4 h-screen">
     <div class="max-w-2xl">
-      <h1 class="text-light text-4xl sm:text-5xl md:text-6xl font-bold">
-        Hello! I'm Ibrahim 👋
-      </h1>
+      <h1 class="text-light text-4xl sm:text-5xl md:text-6xl font-bold">Hello! I'm Ibrahim 👋</h1>
       <p class="text-light-500 text-lg sm:text-xl mt-4">Software Developer</p>
     </div>
     <div class="flex items-center justify-center gap-4 flex-wrap">
