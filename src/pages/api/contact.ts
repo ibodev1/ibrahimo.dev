@@ -1,4 +1,5 @@
 import { checkFormData, checkSpamContact } from '@/utils/contact';
+import { respond } from '@/utils/helpers';
 import type { APIRoute } from 'astro';
 import { db, Contact } from 'astro:db';
 
@@ -23,17 +24,8 @@ export const POST: APIRoute = async (ctx) => {
       userAgent
     });
 
-    return new Response(
-      JSON.stringify({ success: true, message: 'Your contact message has been successfully sent.' }),
-      {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' }
-      }
-    );
+    return respond(200, true, 'Your contact message has been successfully sent.');
   } catch (error) {
-    return new Response(JSON.stringify({ success: false, message: (error as Error).message }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return respond(500, false, (error as Error).message);
   }
 };
