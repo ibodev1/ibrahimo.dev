@@ -1,7 +1,8 @@
 ---
 import BaseHead from '@/components/BaseHead.astro';
 import BottomNavigatonBox from '@/components/BottomNavigatonBox.astro';
-const { title, description } = Astro.props;
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 ---
 
 <!doctype html>

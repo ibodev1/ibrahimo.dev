@@ -1,21 +1,22 @@
 ---
+import type { ListItem } from '@/types';
 import { Home, Contact, MessageCircle } from 'lucide-astro';
 
-const listItems = [
+const listItems: ListItem[] = [
   {
     title: 'Home',
-    icon: Home,
-    href: '/'
+    url: '/',
+    icon: Home
   },
   {
     title: 'About',
-    icon: Contact,
-    href: '/about'
+    url: '/about',
+    icon: Contact
   },
   {
     title: 'Contact',
-    icon: MessageCircle,
-    href: '/contact'
+    url: '/contact',
+    icon: MessageCircle
   }
 ];
 ---
@@ -28,12 +29,12 @@ const listItems = [
     <ul class="flex items-center justify-center">
       {
         listItems.map((item) => {
-          let isActive = Astro.url.pathname.startsWith(item.href);
-          isActive = item.href == '/' ? item.href == Astro.url.pathname : isActive;
+          let isActive = Astro.url.pathname.startsWith(item.url);
+          isActive = item.url == '/' ? item.url == Astro.url.pathname : isActive;
           return (
             <li>
               <a
-                href={item.href}
+                href={item.url}
                 class:list={[
                   'min-w-[80px] min-h-[70px] max-w-[80px] max-h-[70px] p-2 flex items-center justify-center flex-col hover:bg-dark-400/50 transition-all',
                   { 'bg-primary/20': isActive }

@@ -1,49 +1,43 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts.ts';
-import Default from '@/layouts/Default.astro';
+import Layout from '@/layouts/Default.astro';
+import type { ListItem } from '@/types';
 import { Github, Twitter, Linkedin, FileText, Chrome, Heart } from 'lucide-astro';
 
-type SocialMedia = {
-  name: string;
-  url: string;
-  icon: any;
-};
-
-const socialMedias: SocialMedia[] = [
+const socialMedias: ListItem[] = [
   {
-    name: 'Github',
+    title: 'Github',
     url: 'https://github.com/ibodev1',
     icon: Github
   },
   {
-    name: 'Twitter (X)',
+    title: 'Twitter (X)',
     url: 'https://twitter.com/ibodev1',
     icon: Twitter
   },
   {
-    name: 'LinkedIn',
+    title: 'LinkedIn',
     url: 'https://www.linkedin.com/in/ibrahimodev',
     icon: Linkedin
   },
   {
-    name: 'Read.cv',
+    title: 'Read.cv',
     url: 'https://read.cv/ibodev',
     icon: FileText
   },
   {
-    name: 'Google Dev',
+    title: 'Google Dev',
     url: 'https://g.dev/ibodev',
     icon: Chrome
   },
   {
-    name: 'Mastodon',
+    title: 'Mastodon',
     url: 'https://mastodon.com.tr/@ibodev',
     icon: Heart
   }
 ];
 ---
 
-<Default title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<Layout>
   <div class="flex items-center justify-center flex-col gap-8 text-center px-4 h-screen">
     <div class="max-w-2xl">
       <h1 class="text-light text-4xl sm:text-5xl md:text-6xl font-bold">Hello! I'm Ibrahim 👋</h1>
@@ -51,19 +45,19 @@ const socialMedias: SocialMedia[] = [
     </div>
     <div class="flex items-center justify-center gap-4 flex-wrap">
       {
-        socialMedias.map((s) => (
+        socialMedias.map(({ icon: Icon, title, url }) => (
           <a
-            href={s.url}
+            href={url}
             target="_blank"
             rel="nofollow noopener noreferrer"
-            class="bg-secondary hover:bg-secondary-600 active:bg-secondary-700 transition-all duration-200 ease-in-out w-24 h-24 rounded-lg flex items-center justify-center text-center text-ellipsis flex-col text-nowrap space-y-1"
-            aria-label={s.name}
+            class="bg-secondary hover:bg-secondary-600 active:bg-secondary-700 transition-all duration-200 ease-in-out w-24 h-24 rounded-lg flex items-center justify-center text-center text-ellipsis flex-col text-nowrap space-y-2"
+            aria-label={title}
           >
-            <s.icon class="w-6 h-6" />
-            <span class="text-sm">{s.name}</span>
+            <Icon class="w-6 h-6" />
+            <span class="text-sm">{title}</span>
           </a>
         ))
       }
     </div>
   </div>
-</Default>
+</Layout>

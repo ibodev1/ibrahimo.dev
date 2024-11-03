@@ -1,4 +1,4 @@
-import { checkStringValue } from './helpers';
+import { checkStringValue, respond } from './helpers';
 import { db, gte, eq, count, and, Contact } from 'astro:db';
 
 type CheckFormDataProps = {
@@ -14,16 +14,7 @@ const checkFormData = ({ name, surname, email, subject, message }: CheckFormData
     const missingField = [name, surname, email, subject, message].findIndex(checkStringValue);
     const fieldNames = ['Name', 'Surname', 'Email', 'Subject', 'Message'];
 
-    return new Response(
-      JSON.stringify({
-        success: false,
-        message: `${fieldNames[missingField]} is required!`
-      }),
-      {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' }
-      }
-    );
+    return respond(400, false, `${fieldNames[missingField]} is required!`);
   }
 
   return null;
