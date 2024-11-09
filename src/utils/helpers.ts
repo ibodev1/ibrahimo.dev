@@ -2,12 +2,13 @@ export const checkStringValue = (value?: string | FormDataEntryValue | null): bo
   return typeof value === 'string' && value.trim() !== '';
 };
 
-export const respond = (status: number, success: boolean, message: string): Response => {
+export const respond = <T = any>(status: number, success: boolean, message: string, data?: T): Response => {
   return new Response(
     JSON.stringify({
       status,
       success,
-      message
+      message,
+      data
     }),
     {
       status,
