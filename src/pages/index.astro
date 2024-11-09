@@ -1,4 +1,5 @@
 ---
+import Spotify from '@/components/Spotify.astro';
 import Layout from '@/layouts/Default.astro';
 import type { ListItem } from '@/types';
 import { Github, Twitter, Linkedin, FileText, Chrome, Heart } from 'lucide-astro';
@@ -59,5 +60,6 @@ const socialMedias: ListItem[] = [
         ))
       }
     </div>
+    <Spotify />
   </div>
 </Layout>

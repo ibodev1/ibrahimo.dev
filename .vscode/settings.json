@@ -4,5 +4,6 @@
   "[astro]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "typescript.inlayHints.parameterNames.enabled": "none"
+  "typescript.inlayHints.parameterNames.enabled": "none",
+  "biome.enabled": false
 }
