@@ -2,9 +2,13 @@
 import { AudioLines } from 'lucide-astro';
 
 const getSong = async () => {
-  return fetch(new URL('/api/spotify', Astro.url)).then((res) => res.json());
+  const spotfiyApi = new URL('/api/spotify', Astro.url);
+  const response = await fetch(spotfiyApi, { method: 'GET' });
+  return response.ok ? await response.json() : null;
 };
-const { data: song } = await getSong();
+
+const songRes = await getSong();
+const song = songRes?.success ? songRes.data : undefined;
 ---
 
 {
