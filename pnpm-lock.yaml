@@ -69,8 +69,8 @@ importers:
         specifier: ^0.14.1
         version: 0.14.1
       tailwindcss-palette-generator:
-        specifier: ^0.7.0
-        version: 0.7.0(tailwindcss@3.4.14)
+        specifier: ^0.10.0
+        version: 0.10.0(tailwindcss@3.4.14)
 
 packages:
   '@alloc/quick-lru@5.2.0':
@@ -1280,9 +1280,9 @@ packages:
       { integrity: sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ== }
     engines: { node: '>=10' }
 
-  chroma-js@2.6.0:
+  chroma-js@3.1.2:
     resolution:
-      { integrity: sha512-BLHvCB9s8Z1EV4ethr6xnkl/P2YRFOGqfgvuMG/MyCbZPrTA+NeiByY6XvgF0zP4/2deU2CXnWyMa3zu1LqQ3A== }
+      { integrity: sha512-IJnETTalXbsLx1eKEgx19d5L6SRM7cH4vINw/99p/M11HCuXGRWL+6YmCm7FWFGIo6dtWuQoQi1dc5yQ7ESIHg== }
 
   ci-info@4.0.0:
     resolution:
@@ -2022,7 +2022,6 @@ packages:
   libsql@0.4.6:
     resolution:
       { integrity: sha512-F5M+ltteK6dCcpjMahrkgT96uFJvVI8aQ4r9f2AzHQjC7BkAYtvfMSTWGvRBezRgMUIU2h1Sy0pF9nOGOD5iyA== }
-    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@2.1.0:
@@ -2947,9 +2946,9 @@ packages:
       { integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w== }
     engines: { node: '>= 0.4' }
 
-  tailwindcss-palette-generator@0.7.0:
+  tailwindcss-palette-generator@0.10.0:
     resolution:
-      { integrity: sha512-pyujKTeGnaNOvjLhH1tzhY8Mjgw/txsZl4pzDfeGxWkRt6gMlXCye1OqXUFmdXcmxSL+9gtot+WOWa0kupXM9w== }
+      { integrity: sha512-ArObO+smuITkkeRTRrQEEohDwK/0+sSjhlPv+fY/f9DbeapVvBQMUescbZpYWoIp28ELu0nMeKSi+Un6oM/icQ== }
     engines: { node: '>=18' }
     peerDependencies:
       tailwindcss: '>=3.4.0 || insiders'
@@ -4570,7 +4569,7 @@ snapshots:
 
   chownr@2.0.0: {}
 
-  chroma-js@2.6.0: {}
+  chroma-js@3.1.2: {}
 
   ci-info@4.0.0: {}
 
@@ -6032,9 +6031,9 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  tailwindcss-palette-generator@0.7.0(tailwindcss@3.4.14):
+  tailwindcss-palette-generator@0.10.0(tailwindcss@3.4.14):
     dependencies:
-      chroma-js: 2.6.0
+      chroma-js: 3.1.2
       tailwindcss: 3.4.14
 
   tailwindcss@3.4.14:
