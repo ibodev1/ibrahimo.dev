@@ -1,5 +1,14 @@
 import { column, defineDb, defineTable, NOW } from 'astro:db';
 
+const Admin = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true }),
+    password: column.text({ optional: false }),
+    createdAt: column.date({ default: NOW }),
+    updatedAt: column.date({ optional: true })
+  }
+});
+
 const Contact = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
@@ -14,5 +23,5 @@ const Contact = defineTable({
 });
 
 export default defineDb({
-  tables: { Contact }
+  tables: { Admin, Contact }
 });
