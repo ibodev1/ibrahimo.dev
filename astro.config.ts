@@ -35,6 +35,10 @@ export default defineConfig({
     server: {
       host: true,
       open: true
+    },
+    build: {
+      minify: 'esbuild',
+      target: 'es2022'
     }
   }
 });

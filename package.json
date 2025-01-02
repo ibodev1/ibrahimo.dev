@@ -3,12 +3,12 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --remote",
     "build": "astro check && astro build --remote",
-    "preview": "astro preview",
+    "preview": "astro preview --remote",
     "format": "prettier . --write",
-    "db:verify": "astro db verify",
-    "db:push": "astro db push"
+    "db:verify": "astro db verify --remote",
+    "db:push": "astro db push --remote"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -36,5 +36,5 @@
     "prettier-plugin-astro": "^0.14.1",
     "tailwindcss-palette-generator": "^0.10.0"
   },
-  "packageManager": "pnpm@9.15.2"
+  "packageManager": "npm@11.0.0"
 }
