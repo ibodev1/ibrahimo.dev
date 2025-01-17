@@ -1,9 +1,7 @@
-import db from '@astrojs/db';
 import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel/serverless';
-import webVitals from '@astrojs/web-vitals';
+import vercel from '@astrojs/vercel';
 import robotsTxt from 'astro-robots-txt';
 import { defineConfig } from 'astro/config';
 
@@ -18,20 +16,17 @@ export default defineConfig({
       config: {
         forward: ['dataLayer.push']
       }
-    }),
-    webVitals(),
-    db()
+    })
   ],
   output: 'server',
   adapter: vercel({
+    edgeMiddleware: true,
     webAnalytics: {
-      enabled: true
-    },
-    speedInsights: {
       enabled: true
     },
     maxDuration: 8
   }),
+  prefetch: false,
   vite: {
     server: {
       host: true,
