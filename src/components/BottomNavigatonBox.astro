@@ -1,23 +1,12 @@
 ---
 import type { ListItem } from '@/types';
-import { Home, Contact, MessageCircle } from 'lucide-astro';
+import { Home, Contact, Mail } from 'lucide-astro';
+import { MAILTO } from '@/consts';
 
 const listItems: ListItem[] = [
-  {
-    title: 'Home',
-    url: '/',
-    icon: Home
-  },
-  {
-    title: 'About',
-    url: '/about',
-    icon: Contact
-  },
-  {
-    title: 'Contact',
-    url: 'mailto:developer.ibrahimodev@gmail.com',
-    icon: MessageCircle
-  }
+  { title: 'Home', url: '/', icon: Home },
+  { title: 'About', url: '/about', icon: Contact },
+  { title: 'Hire Me', url: MAILTO, icon: Mail }
 ];
 ---
 
