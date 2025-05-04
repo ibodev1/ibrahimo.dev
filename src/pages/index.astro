@@ -1,8 +1,9 @@
 ---
-import { MAILTO } from '@/consts';
 import Layout from '@/layouts/Default.astro';
 import type { ListItem } from '@/types';
-import { Github, Twitter, Linkedin, FileText, Chrome, Heart, Mail } from 'lucide-astro';
+import { Github, Twitter, Linkedin, FileText, Chrome, Heart } from 'lucide-astro';
+
+import '../styles/global.css';
 
 const socialMedias: ListItem[] = [
   { title: 'Github', url: 'https://github.com/ibodev1', icon: Github },
@@ -35,12 +36,6 @@ const socialMedias: ListItem[] = [
           </a>
         ))
       }
-    </div>
-    <div class="flex items-center justify-center p-4">
-      <a href={MAILTO} class="flex items-center gap-2">
-        <Mail class="w-4 h-4" />
-        <p class="text-sm">Contact/Hire Me!</p>
-      </a>
     </div>
   </div>
 </Layout>
