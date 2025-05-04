@@ -1,5 +1,6 @@
+import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
-import getPalette from 'tailwindcss-palette-generator';
+import { getPalette } from 'tailwindcss-palette-generator';
 
 const palette = getPalette([
   {
@@ -40,5 +41,5 @@ export default {
       }
     }
   },
-  plugins: [require('@tailwindcss/typography')]
+  plugins: [typography]
 } satisfies Config;

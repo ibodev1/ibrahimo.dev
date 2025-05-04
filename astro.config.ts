@@ -1,23 +1,13 @@
-import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel';
+import tailwindcss from '@tailwindcss/vite';
 import robotsTxt from 'astro-robots-txt';
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.ibrahimo.dev',
-  integrations: [
-    tailwind(),
-    sitemap(),
-    robotsTxt(),
-    partytown({
-      config: {
-        forward: ['dataLayer.push']
-      }
-    })
-  ],
+  integrations: [sitemap(), robotsTxt()],
   output: 'server',
   adapter: vercel({
     edgeMiddleware: true,
@@ -31,6 +21,7 @@ export default defineConfig({
     server: {
       host: true,
       open: true
-    }
+    },
+    plugins: [tailwindcss()]
   }
 });
