@@ -1,7 +1,13 @@
 @import 'tailwindcss';
-@config 'tailwind.config.ts';
+@config "tailwind.config.ts";
 
-@plugin '@tailwindcss/typography';
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-palette-generator" {
+  primary: #00adb5;
+  secondary: #393e46;
+  dark: #222831;
+  light: #eeeeee;
+}
 
 @theme {
   --font-sans: Inter, sans-serif;

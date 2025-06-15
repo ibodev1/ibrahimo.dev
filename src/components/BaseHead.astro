@@ -2,7 +2,6 @@
 import { ClientRouter } from 'astro:transitions';
 import '@/styles/global.css';
 import { SITE_DESCRIPTION, SITE_IMAGE_PATH, SITE_TITLE } from '@/consts';
-import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
   title?: string;
@@ -51,9 +50,6 @@ const imageURL = new URL(image, Astro.url);
 
 <!-- ViewTransitions -->
 <ClientRouter />
-
-<!-- Vercel SpeedInsights -->
-<SpeedInsights />
 
 <!-- Scroll To Top After Page Transition  -->
 <script>

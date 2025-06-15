@@ -1,4 +1,4 @@
-import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts.ts';
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts.ts';
 import rss from '@astrojs/rss';
 import type { APIRoute } from 'astro';
 
