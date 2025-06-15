@@ -1,5 +1,5 @@
 import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel';
+import deno from '@deno/astro-adapter';
 import tailwindcss from '@tailwindcss/vite';
 import robotsTxt from 'astro-robots-txt';
 import { defineConfig } from 'astro/config';
@@ -9,13 +9,7 @@ export default defineConfig({
   site: 'https://www.ibrahimo.dev',
   integrations: [sitemap(), robotsTxt()],
   output: 'server',
-  adapter: vercel({
-    edgeMiddleware: true,
-    webAnalytics: {
-      enabled: true
-    },
-    maxDuration: 8
-  }),
+  adapter: deno(),
   prefetch: false,
   vite: {
     server: {
