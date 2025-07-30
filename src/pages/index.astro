@@ -1,41 +1,76 @@
 ---
-import Layout from '@/layouts/Default.astro';
-import type { ListItem } from '@/types';
-import { Github, Twitter, Linkedin, FileText, Chrome, Heart } from 'lucide-astro';
+import { getCollection } from 'astro:content';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import Layout from '@/layouts/main.astro';
+import Hero from '@/components/Hero.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import BlogCard from '@/components/BlogCard.astro';
 
-import '../styles/global.css';
+const allProjects = await getCollection('projects');
+const recentProjects = allProjects.slice(0, 2);
 
-const socialMedias: ListItem[] = [
-  { title: 'Github', url: 'https://github.com/ibodev1', icon: Github },
-  { title: 'Twitter (X)', url: 'https://twitter.com/ibodev1', icon: Twitter },
-  { title: 'LinkedIn', url: 'https://www.linkedin.com/in/ibrahimodev', icon: Linkedin },
-  { title: 'Read.cv', url: 'https://read.cv/ibodev', icon: FileText },
-  { title: 'Google Dev', url: 'https://g.dev/ibodev', icon: Chrome },
-  { title: 'Bluesky', url: 'https://bsky.app/profile/ibrahimo.dev', icon: Heart }
-];
+const allBlogs = await getCollection('blog');
+const recentBlogs = allBlogs.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()).slice(0, 2);
 ---
 
 <Layout>
-  <div class="flex items-center justify-center flex-col gap-8 text-center px-4 h-screen">
-    <div class="max-w-2xl">
-      <h1 class="text-light text-4xl sm:text-5xl md:text-6xl font-bold">Hello! I'm Ibrahim 👋</h1>
-      <p class="text-light-500 text-lg sm:text-xl mt-4">Software Developer</p>
-    </div>
-    <div class="flex items-center justify-center gap-4 flex-wrap">
-      {
-        socialMedias.map(({ icon: Icon, title, url }) => (
-          <a
-            href={url}
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-            class="bg-secondary hover:bg-secondary-600 active:bg-secondary-700 transition-all duration-200 ease-in-out w-24 h-24 rounded-lg flex items-center justify-center text-center text-ellipsis flex-col text-nowrap space-y-2"
-            aria-label={title}
-          >
-            <Icon class="w-6 h-6" />
-            <span class="text-sm">{title}</span>
-          </a>
-        ))
-      }
-    </div>
+  <!-- Main Content Container -->
+  <div class="container mx-auto max-w-4xl px-4">
+    <Hero />
+
+    <Separator className="my-12" />
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16">
+      <div class="mb-12 text-center">
+        <h2 class="mb-4 text-3xl font-bold">Recent Projects</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2">
+        {
+          recentProjects.map((project) => (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              tags={project.data.tags}
+              demoUrl={project.data.demoUrl}
+              githubUrl={project.data.githubUrl}
+            />
+          ))
+        }
+      </div>
+      <div class="mt-8 text-center">
+        <Button variant="outline" className="transition-transform hover:scale-105">
+          <a href="/projects" class="flex items-center"> All Projects → </a>
+        </Button>
+      </div>
+    </section>
+
+    <Separator className="my-12" />
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-16">
+      <div class="mb-12 text-center">
+        <h2 class="mb-4 text-3xl font-bold">Recent Posts</h2>
+      </div>
+      <div class="grid gap-6">
+        {
+          recentBlogs.map((blog) => (
+            <BlogCard
+              title={blog.data.title}
+              description={blog.data.description}
+              publishDate={blog.data.publishDate}
+              tags={blog.data.tags}
+              slug={blog.slug}
+            />
+          ))
+        }
+      </div>
+      <div class="mt-8 text-center">
+        <Button variant="outline" className="transition-transform hover:scale-105">
+          <a href="/blog" class="flex items-center"> All Posts → </a>
+        </Button>
+      </div>
+    </section>
   </div>
 </Layout>

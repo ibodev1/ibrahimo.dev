@@ -1,5 +1,5 @@
 export type ListItem = {
   title: string;
   url: string;
-  icon: any;
+  icon: astroHTML.JSX.Element;
 };

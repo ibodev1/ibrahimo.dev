@@ -1,0 +1,45 @@
+---
+import { Button } from '@/components/ui/button';
+import { MAILTO } from '@/consts';
+import { cn } from '@/lib/utils';
+
+const path = Astro.url.pathname;
+const isActive = (page: string) => path === `/${page}` || (page === 'home' && path === '/');
+---
+
+<header class="border-border/40 supports-[backdrop-filter]:bg-background/60 border-b backdrop-blur">
+  <div class="container mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
+    <div class="flex items-center space-x-3">
+      <a href="/" class="hover:text-muted-foreground text-xl font-bold transition-colors">@ibodev</a>
+    </div>
+    <nav class="hidden items-center space-x-8 md:flex">
+      <a
+        href="/"
+        class={cn(`text-sm transition-colors text-muted-foreground hover:text-foreground`, {
+          'text-foreground font-medium': isActive('home')
+        })}
+      >
+        <span>Home</span>
+      </a>
+      <a
+        href="/projects"
+        class={cn(`text-sm transition-colors text-muted-foreground hover:text-foreground`, {
+          'text-foreground font-medium': isActive('projects')
+        })}
+      >
+        <span>Projects</span>
+      </a>
+      <a
+        href="/blog"
+        class={cn(`text-sm transition-colors text-muted-foreground hover:text-foreground`, {
+          'text-foreground font-medium': isActive('blog')
+        })}
+      >
+        <span>Blog</span>
+      </a>
+    </nav>
+    <a href={MAILTO}>
+      <Button size="sm" className="cursor-pointer transition-transform hover:scale-105"> Get In Touch </Button>
+    </a>
+  </div>
+</header>

@@ -1,0 +1,34 @@
+---
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+
+const skills = [
+  'JavaScript',
+  'TypeScript',
+  'React',
+  'Next.js',
+  'Astro',
+  'Node.js',
+  'Deno',
+  'HonoJS',
+  'tRPC',
+  'TailwindCSS',
+  'Prisma',
+  'MongoDB',
+  'PostgreSQL',
+  'Redis',
+  'Docker',
+  'Vercel',
+  'AWS'
+];
+---
+
+<div class="mt-16">
+  <Separator className="mb-12" />
+  <div class="text-center">
+    <h2 class="mb-8 text-2xl font-bold">Technologies I Use</h2>
+    <div class="flex flex-wrap justify-center gap-3">
+      {skills.map((skill: string) => <Badge variant="secondary">{skill}</Badge>)}
+    </div>
+  </div>
+</div>

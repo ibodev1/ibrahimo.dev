@@ -1,0 +1,51 @@
+---
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  demoUrl?: string;
+  githubUrl?: string;
+}
+
+const { title, description, tags, demoUrl, githubUrl } = Astro.props;
+---
+
+<Card className="group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
+  <CardHeader>
+    <CardTitle className="text-xl">{title}</CardTitle>
+    <CardDescription>
+      {description}
+    </CardDescription>
+  </CardHeader>
+  <CardContent>
+    <div class="space-y-4">
+      <div class="flex flex-wrap gap-2">
+        {tags.map((tag) => <Badge variant="outline">{tag}</Badge>)}
+      </div>
+      <div class="flex gap-2">
+        {
+          demoUrl && (
+            <Button variant="outline" size="sm" className="transition-transform hover:scale-105">
+              <a href={demoUrl} target="_blank" rel="noopener noreferrer">
+                Demo
+              </a>
+            </Button>
+          )
+        }
+        {
+          githubUrl && (
+            <Button variant="outline" size="sm" className="transition-transform hover:scale-105">
+              <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+            </Button>
+          )
+        }
+      </div>
+    </div>
+  </CardContent>
+</Card>
