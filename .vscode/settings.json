@@ -1,9 +1,20 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.documentSelectors": ["**/*.astro"],
-  "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "deno.enable": true,
+  "deno.lint": true,
+  "editor.defaultFormatter": "denoland.vscode-deno",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
   },
-  "typescript.inlayHints.parameterNames.enabled": "none",
-  "biome.enabled": false
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "css.customData": [
+    ".vscode/tailwind.json"
+  ]
 }
