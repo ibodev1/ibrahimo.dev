@@ -1,13 +1,16 @@
-import { Chrome, Github, Heart, Linkedin, type LucideIcon, Twitter } from "lucide-preact";
-
-export const SITE_TITLE = "İbrahim Ödev - @ibodev";
-
-export const MAILTO = "mailto:me@ibrahimo.dev";
+import {
+  type AstroComponent,
+  Chrome,
+  Github,
+  Heart,
+  Linkedin,
+  Twitter,
+} from "@lucide/astro";
 
 interface ListItem {
   title: string;
   url: string;
-  icon: LucideIcon;
+  icon: AstroComponent;
 }
 
 export const socialMedias: ListItem[] = [
