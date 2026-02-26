@@ -1,6 +1,5 @@
 import {
   type AstroComponent,
-  Chrome,
   Github,
   Heart,
   Linkedin,
@@ -21,7 +20,6 @@ export const socialMedias: ListItem[] = [
     url: "https://www.linkedin.com/in/ibrahimodev",
     icon: Linkedin,
   },
-  { title: "Google Dev", url: "https://g.dev/ibodev", icon: Chrome },
   {
     title: "Bluesky",
     url: "https://bsky.app/profile/ibrahimo.dev",
