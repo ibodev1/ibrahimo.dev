@@ -8,8 +8,5 @@ export default defineConfig({
   site: "https://ibrahimo.dev",
   vite: {
     plugins: [tailwindcss()],
-    preview: {
-      allowedHosts: ["ibrahimo.dev", "www.ibrahimo.dev"],
-    },
   },
 });
