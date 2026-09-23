@@ -5,9 +5,7 @@ import Layout from "../layouts/layout.astro";
 ---
 
 <Layout>
-  <div
-    class="flex min-h-screen items-center justify-center bg-neutral-950 px-4 py-8 text-neutral-200"
-  >
+  <div class="flex min-h-screen items-center justify-center bg-neutral-950 px-4 py-8 text-neutral-200">
     <div class="w-full max-w-md text-center">
       <img
         src="/assets/pp.jpeg"
@@ -20,22 +18,20 @@ import Layout from "../layouts/layout.astro";
       <p class="mb-8 text-neutral-500">@ibodev</p>
 
       <div class="mb-4 flex flex-col gap-3">
-        {
-          socialMedias.map((item) => (
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center justify-center gap-3 rounded-lg border border-neutral-800 bg-neutral-900 px-5 py-3.5 text-neutral-200 no-underline transition-all duration-200 hover:-translate-y-0.5 hover:border-neutral-700 hover:bg-neutral-800"
-            >
-              <span
-                class="h-5 w-5 [&>svg]:h-full [&>svg]:w-full [&>svg]:fill-current"
-                set:html={item.svg}
-              />
-              <span class="text-sm sm:text-base">{item.title}</span>
-            </a>
-          ))
-        }
+        {socialMedias.map((item) => (
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center gap-3 rounded-lg border border-neutral-800 bg-neutral-900 px-5 py-3.5 text-neutral-200 no-underline transition-all duration-200 hover:-translate-y-0.5 hover:border-neutral-700 hover:bg-neutral-800"
+          >
+            <span
+              class="h-5 w-5 [&>svg]:h-full [&>svg]:w-full [&>svg]:fill-current"
+              set:html={item.svg}
+            />
+            <span class="text-sm sm:text-base">{item.title}</span>
+          </a>
+        ))}
       </div>
 
       <div class="mt-6">
