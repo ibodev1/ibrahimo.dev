@@ -1,4 +1,4 @@
-import { siGithub, siBluesky, siHuggingface } from "simple-icons";
+import { siBluesky, siGithub, siHuggingface } from "simple-icons";
 
 interface ListItem {
   title: string;
@@ -7,11 +7,10 @@ interface ListItem {
 }
 
 export const socialMedias: ListItem[] = [
-  { title: "Github", url: "https://github.com/ibodev1", svg: siGithub.svg },
   {
-    title: "Bluesky",
-    url: "https://bsky.app/profile/ibrahimo.dev",
-    svg: siBluesky.svg,
+    title: "Github",
+    url: "https://github.com/ibodev1",
+    svg: siGithub.svg,
   },
   {
     title: "LinkedIn",
