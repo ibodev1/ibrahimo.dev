@@ -14,16 +14,13 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^14.4.9",
-    "@tailwindcss/vite": "^4.3.5",
     "astro": "^7.4.13",
     "simple-icons": "^16.38.1",
-    "tailwindcss": "^4.3.5",
     "wrangler": "^4.166.0"
   },
   "devDependencies": {
     "prettier": "^3.10.1",
-    "prettier-plugin-astro": "^1.1.2",
-    "prettier-plugin-tailwindcss": "^0.8.1"
+    "prettier-plugin-astro": "^1.1.2"
   },
   "packageManager": "pnpm@12.21.0"
 }

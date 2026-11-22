@@ -1,47 +1,39 @@
 ---
-import { MAILTO } from "../constants/contact";
+import { MAILTO, SITE_NAME } from "../constants/site";
 import { socialMedias } from "../constants/social";
 import Layout from "../layouts/layout.astro";
 ---
 
 <Layout>
-  <div class="flex min-h-screen items-center justify-center bg-neutral-950 px-4 py-8 text-neutral-200">
-    <div class="w-full max-w-md text-center">
-      <img
-        src="/assets/pp.jpeg"
-        alt="İbrahim Ödev"
-        class="mx-auto mb-6 h-28 w-28 rounded-full border-2 border-neutral-800"
-      />
+  <main>
+    <div class="card">
+      <h1>{SITE_NAME}</h1>
+      <p class="subtitle">Software Developer</p>
 
-      <h2 class="mb-1 text-2xl font-semibold text-white">İbrahim Ödev</h2>
-
-      <p class="mb-8 text-neutral-500">@ibodev</p>
-
-      <div class="mb-4 flex flex-col gap-3">
+      <nav aria-label="Social links" class="links">
         {socialMedias.map((item) => (
           <a
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center justify-center gap-3 rounded-lg border border-neutral-800 bg-neutral-900 px-5 py-3.5 text-neutral-200 no-underline transition-all duration-200 hover:-translate-y-0.5 hover:border-neutral-700 hover:bg-neutral-800"
+            class="link"
           >
-            <span
-              class="h-5 w-5 [&>svg]:h-full [&>svg]:w-full [&>svg]:fill-current"
-              set:html={item.svg}
-            />
-            <span class="text-sm sm:text-base">{item.title}</span>
+            <span class="icon" aria-hidden="true" set:html={item.svg} />
+            <span class="label">{item.title}</span>
+            <svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M7 17 17 7M7 7h10v10" />
+            </svg>
           </a>
         ))}
-      </div>
+      </nav>
 
-      <div class="mt-6">
-        <a
-          href={MAILTO}
-          class="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 text-sm font-medium text-neutral-950 no-underline transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-100 sm:text-base"
-        >
-          Contact Me
-        </a>
-      </div>
+      <a href={MAILTO} class="contact">
+        <svg class="mail" aria-hidden="true" viewBox="0 0 24 24">
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+        </svg>
+        Contact Me
+      </a>
     </div>
-  </div>
+  </main>
 </Layout>
